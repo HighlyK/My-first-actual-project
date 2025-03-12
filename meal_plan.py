@@ -1,12 +1,5 @@
-print("This is your meal plan")
-print("Explaination: For me i have three seperate meals over a day. So, I thought most of you guys are like that as well")
+import os
 
-print("create meal file")
-print("manage meal")
-print("delete file")
-print("view meals")
-
-user_choice = input("Enter choices between those(create/manage/delete?view): ").lower()
 
 def create_meal():
     try:
@@ -44,11 +37,57 @@ def manage_meal():
     except Exception as e:
         print(f"An error occurred: {e}")
 
+def delete_file():
+    os.remove('meal_plan.txt')
+    if FileNotFoundError:
+        print("File not found")
 
-if user_choice == "create":
-    create_meal()
+def view_file():
+    try:
+        with open('meal_plan.txt') as f:
+            lines = f.readlines()
+        for line in lines:
+            print(line.strip())
+    except FileNotFoundError:
+        print("File not found")
+    except:
+        print("unknown error?????????")
 
-if user_choice == "manage":
-    manage_meal()
+
+def main_page():
+    while True:
+        print("This is your meal plan")
+        print("\n")
+        print("Explaination: For me i have three seperate meals over a day. So, I thought most of you guys are like that as well")
+        print("\n")
+        print("create meal file")
+        print("\n")
+        print("manage meal")
+        print("\n")
+        print("delete file")
+        print("\n")
+        print("view meals")
+        print("\n")
+        print("quit")
+        print("\n")
+        user_choice = input("Enter choices between those(create/manage/delete?view/quit): ").lower()
+
+
+        if user_choice == "create":
+            create_meal()
+
+        if user_choice == "manage":
+            manage_meal()
+
+        if user_choice == "delete":
+            delete_file()
+
+        if user_choice == "view":
+            view_file()
+        if user_choice == "quit":
+            quit()
+
+if __name__ == "__main__":
+    main_page()
 
 
