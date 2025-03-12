@@ -4,8 +4,9 @@ print("Explaination: For me i have three seperate meals over a day. So, I though
 print("create meal file")
 print("manage meal")
 print("delete file")
+print("view meals")
 
-user_choice = input("Enter choices between those(create/manage/delete): ").lower()
+user_choice = input("Enter choices between those(create/manage/delete?view): ").lower()
 
 def create_meal():
     try:
